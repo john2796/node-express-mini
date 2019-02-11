@@ -29,11 +29,11 @@ server.get("/api/users/:id", (req, res) => {
     .then(user => {
       if (user) {
         res.status(200).json({ success: true, user });
+      } else {
         res.status(404).json({
           success: true,
           message: "The user with the specified ID does not exist."
         });
-      } else {
       }
     })
     .catch(err =>
@@ -43,7 +43,6 @@ server.get("/api/users/:id", (req, res) => {
       })
     );
 });
-
 //POST
 server.post("/api/users", (req, res) => {
   const { name, bio } = req.body;
